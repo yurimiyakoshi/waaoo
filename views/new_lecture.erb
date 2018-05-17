@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="/assets/css/lecture.css">
+</head>
+<body>
+<h2>授業を追加</h2>
+<div class="right">
+  <form action="/new" method="post">
+  <div class="select-box01">
+    <select name="date">
+     <option value="月">月</option>
+     <option value="火">火</option>
+     <option value="水">水</option>
+     <option value="木">木</option>
+     <option value="金">金</option>
+     <option value="土">土</option>
+    </select>
+    <select name="number">
+     <option value="1">1限</option>
+     <option value="2">2限</option>
+     <option value="3">3限</option>
+     <option value="4">4限</option>
+     <option value="5">5限</option>
+     <option value="6">6限</option>
+    </select>
+  </div>
+    
+    <p>名前:<input type="text" name="name" placeholder="授業名"></p>
+    <p>場所:<input type="text" name="place" placeholder="場所"></p>
+    <p>教授名：<input type="text" name="teacher" placeholder="教授"></p>
+    <p>メールアドレス：<input type="text" name="mail"  placeholder="mail"></p>
+
+    <p><input type="submit" value="登録" class="button"></p>
+  </form>
+</div>
+</body>
+</html>

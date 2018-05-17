@@ -1,0 +1,95 @@
+*{
+    font-family: 'ヒラギノ丸ゴ ProN',
+                              'Hiragino Maru Gothic ProN',
+                              'メイリオ', 
+                              Meiryo,
+                              'ヒラギノ角ゴシック',
+                              'Hiragino Sans',
+                              sans-serif;
+    color:#604C3F;
+}
+
+
+body {
+    background: linear-gradient(25deg, rgba(242, 128, 165, 0.4), rgba(6, 212, 226, 0.4)) ,url(../images/logouni.png);
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-position: center;
+    text-align: center;
+    vertical-align: 30%;
+}
+.button {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    color: #80cbd0;
+    border: double 4px #80cbd0;
+    border-radius: 8px;
+    transition: .4s;
+     width: 30%;
+    margin: 2em 1.25%;
+    background: transparent;
+    
+}
+.button:hover {
+    background: #eeeeee;
+}
+
+h2 {
+  margin-top: 5%;
+}
+
+.right{
+    padding-top: 50px;
+}
+  
+
+input{
+     width: 30%;
+    margin: 2em 1.25%;
+    border: 0; 
+    background: transparent;
+    border: 5px;
+    padding: .25em .35em;
+    outline: none; 
+    border-radius: 8px;
+}
+
+
+input[type="text"],
+textarea {
+  outline: none;
+  border: 1px solid #aaa;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+input[type="text"]:focus,
+textarea:focus {
+  box-shadow: 0 0 7px #80cbd0;
+  border: 1px solid #80cbd0;
+}
+
+input[type="password"],
+textarea {
+  outline: none;
+  border: 1px solid #aaa;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+input[type="password"]:focus,
+textarea:focus {
+  box-shadow: 0 0 7px #80cbd0;
+  border: 1px solid #80cbd0;
+}
+.select-box01 select {
+	width: 5%;
+	padding: 10px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #999;
+	background: #eee;
+	background: url(arrow01.png) right 50% no-repeat, -webkit-linear-gradient(top, #fff 0%,#efebe1 100%);
+	background: url(arrow01.png) right 50% no-repeat, linear-gradient(to bottom, #fff 0%,#efebe1 100%);
+	background-size: 20px, 100%;
+}

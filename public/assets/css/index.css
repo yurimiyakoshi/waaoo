@@ -1,0 +1,142 @@
+*{
+    font-family: 'ヒラギノ丸ゴ ProN',
+                              'Hiragino Maru Gothic ProN',
+                              'メイリオ', 
+                              Meiryo,
+                              'ヒラギノ角ゴシック',
+                              'Hiragino Sans',
+                              sans-serif;
+    color:#604C3F;
+    
+}
+
+header {
+    margin-top: 0px;
+	
+}
+
+body {
+    background: linear-gradient(25deg, rgba(242, 128, 165, 0.4), rgba(6, 212, 226, 0.4)) ,url(../images/logouni.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-bottom: 200px;
+    height: 100vh;
+    text-align: center;
+    vertical-align: 30%;
+}
+
+.header {
+    line-height: 20px;
+    margin-left: 150px;
+}
+
+h2 {
+    margin-left: auto;
+    margin-right: auto;
+	font-size: 40px;
+}
+
+.right {
+    padding-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: top;
+}
+
+.menu {
+    margin-left: 85%;
+    line-height: 40px;
+}
+
+div {
+    width: 200px;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: .4s;
+    color: #80cbd0;
+    border-radius: 8px;
+    transition: .4s;
+    
+    margin: 2em 1.25%;
+    background: transparent;
+    
+}
+.button:hover {
+    background: #eeeeee;
+}
+
+
+.table {
+    margin-left: auto;
+    margin-right: auto;
+    border: 8px solid #604C3F;
+    border-radius: 10px;
+    width: 60%;
+    height: 80%;
+    font-size: 15px;
+    background: rgba(25,0,0,0.1);
+    
+    border-collapse: separate;
+    border-spacing: 0;
+  
+    overflow: hidden;
+}
+table thead th,
+table tbody th,
+table tbody td {
+  
+  border-bottom: 1px solid #aaa;
+}
+table thead th + th,
+table tbody td {
+  border-left: 1px solid #aaa;
+}
+table tbody tr:last-child th,
+table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+
+table th {
+  padding: 10px;
+  width: 25px;
+}
+
+input[type="text"],
+textarea {
+  outline: none;
+  border: 1px solid #aaa;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+input[type="text"]:focus,
+textarea:focus {
+  box-shadow: 0 0 7px #80cbd0;
+  border: 1px solid #80cbd0;
+}
+
+input[type="submit"] p {
+	display: block;
+	width: 110px;
+	height: 38px;
+	padding: 0;
+	background: url(https://nxworld.net/example/15-useful-css-snippets-in-form-style/btn_submit.png) no-repeat 0 0;
+	border: none;
+	color: transparent;
+	font-size: 0;
+	cursor: pointer;
+	outline: none;
+}
+input[type="submit"]:hover {
+	background-position: 0 -38px;
+}
+input[type="submit"]:active {
+	background-position: 0 -76px;
+}
+

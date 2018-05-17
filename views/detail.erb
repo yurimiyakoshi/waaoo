@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="/assets/css/sign_in.css">
+</head>
+<body>
+ <p><%= @content.name %></p>
+ <p><%= @content.place %></p>
+ <p><%= @professor.teacher %></p>
+ <p><%= @professor.mail %></p>
+<span>
+ <form action="/detail/<%= @content.id %>" method="post">
+    <p>授業:<input type="text" name="name" value="<%= @content.name %>"></p>
+    <p>場所:<input type="text" name="place" value="<%= @content.place %>"></p>
+    <p>教授名：<input type="text" name="teacher" value="<%= @professor.teacher %>"></p>
+    <p>メールアドレス：<input type="text" name="mail" value="<%= @professor.mail %>"></p>
+    <p>口コミ：<input type="text" name="sentence"></p>
+    <p>教科書/持ち物：<input type="text" name="text"></p>
+    <p>URL：<input type="url" name="text_url"></p>
+    <p>日時：<input type="datetime" name="deadline"></p>
+    <p>内容：<input type="text" name="report"></p>
+    <p><input type="submit" value="完了"></p>
+ </form>
+</span>
+ <form action="/delete/<%= @content.id %>" method="post">
+        <input type="submit" value="削除">
+ </form>
+ 
+<p>口コミ</p>
+ <ul>
+   <% @comments.each do |comment| %>
+  <li>
+    <p><%= comment.sentence %></p>
+  </li>
+   <% end %>
+ </ul>
+ 
+<p>教科書</p>
+ <ul>
+   <% @textbooks.each do |textbook| %>
+  <li>
+    <p><%= textbook.text %></p>
+    <p><a href="<%= textbook.text_url %>"><%= textbook.text_url %></a></p>
+  </li>
+   <% end %> 
+ </ul>
+ 
+<p>リマインド</p>
+ <ul>
+  <% @reminders.each do |reminder| %>
+  <li>
+    <p><%= reminder.deadline %></p>
+    <p><%= reminder.report %></p>
+  </li>
+  <% end %>
+ </ul>
+ 
+</body>
+</html>

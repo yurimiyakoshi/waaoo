@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="UTF-8">
+ <title>Document</title>
+ <link rel="stylesheet" href="/assets/css/sign_in.css">
+</head>
+<body>
+ <h2>ユーザー編集</h2>
+ 
+  <form action="/renew_user/<%= User.find(session[:user]).id %>" method="post">
+   <p>ユーザーネーム：<input type="text" name="user_name" value="<%= User.find(session[:user]).user_name %>"></p>
+   <p>学部/学科：<input type="text" name="major" value="<%= User.find(session[:user]).major %>"></p>
+   <p><input type="submit" value="編集完了" class="button"></p>
+   </form>
+ 
+</body>
+</html>
+  

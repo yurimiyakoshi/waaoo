@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <% unless session[:user] %>
+  <link rel="stylesheet" href="/assets/css/sign_in.css">
+</head>
+<body>
+ <h2>Unishareで口コミを共有してみよう</h2>
+  <div class="right">
+  <a class= "button" href="/">ログイン</a><br><br>
+  <a class="button" href="/signup">新規登録</a><br>
+  </div>
+  
+<% else %>
+<link rel="stylesheet" href="/assets/css/index.css">
+<header>
+  <div class="header">
+  <p><%= current_user.major %></p>
+  <h1><%= current_user.user_name %></h1>
+  <a href="/new_lecture" method="post" class="button">授業を追加</a>
+  </div>
+</header>
+  <div class="menu">
+  <a class= "button" href="/signout">ログアウト</a>
+  <form action="/edit_user/<%= current_user.id %>" method="post">
+   <input type="submit" value="ユーザー編集" class="button">
+  </form>
+  </div>
+<table class="table" rules="all">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">月曜</th>
+      <th scope="col">火曜</th>
+      <th scope="col">水曜</th>
+      <th scope="col">木曜</th>
+      <th scope="col">金曜</th>
+      <th scope="col">土曜</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+<!--１限月〜土-->
+    <tr>
+   <th scope="row">1</th>
+   
+    <td>
+     <% @m1_lessons.each do |m1_lesson| %>
+       <p><%= Contribution.find(m1_lesson).name %></p>
+       <p><%= Contribution.find(m1_lesson).place %></p>
+       <a href="/de/<%= m1_lesson %>">+</a><br>
+     <% end %>
+    </td>
+   
+    <td>
+      <% @t1_lessons.each do |t1_lesson| %>
+       <p><%= Contribution.find(t1_lesson).name %></p>
+       <p><%= Contribution.find(t1_lesson).place %></p>
+       <a href="/de/<%= t1_lesson %>">+</a><br>
+     <% end %>
+    </td>
+   
+     <td>
+      <% @w1_lessons.each do |w1_lesson| %>
+       <p><%= Contribution.find(w1_lesson).name %></p>
+       <p><%= Contribution.find(w1_lesson).place %></p>
+       <a href="/de/<%= w1_lesson %>">+</a><br>
+      <% end %>
+     </td>
+     
+    <td>
+      <% @th1_lessons.each do |th1_lesson| %>
+        <p><%= Contribution.find(th1_lesson).name %></p>
+        <p><%= Contribution.find(th1_lesson).place %></p>
+        <a href="/de/<%= th1_lesson %>">+</a><br>
+      <% end %>
+    </td>
+      
+    <td>
+      <% @f1_lessons.each do |f1_lesson| %>
+        <p><%= Contribution.find(f1_lesson).name %></p>
+        <p><%= Contribution.find(f1_lesson).place %></p>
+        <a href="/de/<%= f1_lesson %>">+</a><br>
+      <% end %>
+    </td>
+    <td>
+      <% @s1_lessons.each do |s1_lesson| %>
+        <p><%= Contribution.find(s1_lesson).name %></p>
+        <p><%= Contribution.find(s1_lesson).place %></p>
+        <a href="/de/<%= s1_lesson %>">+</a><br>
+      <% end %>
+    </td>
+   </tr>
+ 
+<!--２限月〜土-->
+    <tr>
+   <th scope="row">2</th>
+   
+    <td>
+     <% @m2_lessons.each do |m2_lesson| %>
+       <p><%= Contribution.find(m2_lesson).name %></p>
+       <p><%= Contribution.find(m2_lesson).place %></p>
+       <a href="/de/<%= m2_lesson %>">+</a><br>
+     <% end %>
+    </td>
+   
+    <td>
+      <% @t2_lessons.each do |t2_lesson| %>
+       <p><%= Contribution.find(t2_lesson).name %></p>
+       <p><%= Contribution.find(t2_lesson).place %></p>
+       <a href="/de/<%= t2_lesson %>">+</a><br>
+     <% end %>
+    </td>
+   
+     <td>
+      <% @w2_lessons.each do |w2_lesson| %>
+       <p><%= Contribution.find(w2_lesson).name %></p>
+       <p><%= Contribution.find(w2_lesson).place %></p>
+       <a href="/de/<%= w2_lesson %>">+</a><br>
+      <% end %>
+     </td>
+     
+    <td>
+      <% @th2_lessons.each do |th2_lesson| %>
+        <p><%= Contribution.find(th2_lesson).name %></p>
+        <p><%= Contribution.find(th2_lesson).place %></p>
+        <a href="/de/<%= th2_lesson %>">+</a><br>
+      <% end %>
+    </td>
+      
+    <td>
+      <% @f2_lessons.each do |f2_lesson| %>
+        <p><%= Contribution.find(f2_lesson).name %></p>
+        <p><%= Contribution.find(f2_lesson).place %></p>
+        <a href="/de/<%= f2_lesson %>">+</a><br>
+      <% end %>
+    </td>
+    <td>
+      <% @s2_lessons.each do |s2_lesson| %>
+        <p><%= Contribution.find(s2_lesson).name %></p>
+        <p><%= Contribution.find(s2_lesson).place %></p>
+        <a href="/de/<%= s2_lesson %>">+</a><br>
+      <% end %>
+    </td>
+   </tr>
+   
+<!--３限月〜土-->
+    <tr>
+   <th scope="row">3</th>
+   
+    <td>
+     <% @m3_lessons.each do |m3_lesson| %>
+       <p><%= Contribution.find(m3_lesson).name %></p>
+       <p><%= Contribution.find(m3_lesson).place %></p>
+       <a href="/de/<%= m3_lesson %>">+</a><br>
+     <% end %>
+    </td>
+   
+    <td>
+      <% @t3_lessons.each do |t3_lesson| %>
+       <p><%= Contribution.find(t3_lesson).name %></p>
+       <p><%= Contribution.find(t3_lesson).place %></p>
+       <a href="/de/<%= t3_lesson %>">+</a><br>
+     <% end %>
+    </td>
+   
+     <td>
+      <% @w3_lessons.each do |w3_lesson| %>
+       <p><%= Contribution.find(w3_lesson).name %></p>
+       <p><%= Contribution.find(w3_lesson).place %></p>
+       <a href="/de/<%= w3_lesson %>">+</a><br>
+      <% end %>
+     </td>
+     
+    <td>
+      <% @th3_lessons.each do |th3_lesson| %>
+        <p><%= Contribution.find(th3_lesson).name %></p>
+        <p><%= Contribution.find(th3_lesson).place %></p>
+        <a href="/de/<%= th3_lesson %>">+</a><br>
+      <% end %>
+    </td>
+      
+    <td>
+      <% @f3_lessons.each do |f3_lesson| %>
+        <p><%= Contribution.find(f3_lesson).name %></p>
+        <p><%= Contribution.find(f3_lesson).place %></p>
+        <a href="/de/<%= f3_lesson %>">+</a><br>
+      <% end %>
+    </td>
+    <td>
+      <% @s3_lessons.each do |s3_lesson| %>
+        <p><%= Contribution.find(s3_lesson).name %></p>
+        <p><%= Contribution.find(s3_lesson).place %></p>
+        <a href="/de/<%= s3_lesson %>">+</a><br>
+      <% end %>
+    </td>
+   </tr>
+   
+<!--４限月〜土-->
+    <tr>
+   <th scope="row">4</th>
+   
+    <td>
+     <% @m4_lessons.each do |m4_lesson| %>
+       <p><%= Contribution.find(m4_lesson).name %></p>
+       <p><%= Contribution.find(m4_lesson).place %></p>
+       <a href="/de/<%= m4_lesson %>">+</a><br>
+     <% end %>
+    </td>
+   
+    <td>
+      <% @t4_lessons.each do |t4_lesson| %>
+       <p><%= Contribution.find(t4_lesson).name %></p>
+       <p><%= Contribution.find(t4_lesson).place %></p>
+       <a href="/de/<%= t4_lesson %>">+</a><br>
+     <% end %>
+    </td>
+   
+     <td>
+      <% @w4_lessons.each do |w4_lesson| %>
+       <p><%= Contribution.find(w4_lesson).name %></p>
+       <p><%= Contribution.find(w4_lesson).place %></p>
+       <a href="/de/<%= w4_lesson %>">+</a><br>
+      <% end %>
+     </td>
+     
+    <td>
+      <% @th4_lessons.each do |th4_lesson| %>
+        <p><%= Contribution.find(th4_lesson).name %></p>
+        <p><%= Contribution.find(th4_lesson).place %></p>
+        <a href="/de/<%= th4_lesson %>">+</a><br>
+      <% end %>
+    </td>
+      
+    <td>
+      <% @f4_lessons.each do |f4_lesson| %>
+        <p><%= Contribution.find(f4_lesson).name %></p>
+        <p><%= Contribution.find(f4_lesson).place %></p>
+        <a href="/de/<%= f4_lesson %>">+</a><br>
+      <% end %>
+    </td>
+    <td>
+      <% @s4_lessons.each do |s4_lesson| %>
+        <p><%= Contribution.find(s4_lesson).name %></p>
+        <p><%= Contribution.find(s4_lesson).place %></p>
+        <a href="/de/<%= s4_lesson %>">+</a><br>
+      <% end %>
+    </td>
+   </tr>
+   
+<!--５限月〜土-->
+    <tr>
+   <th scope="row">5</th>
+   
+    <td>
+     <% @m5_lessons.each do |m5_lesson| %>
+       <p><%= Contribution.find(m5_lesson).name %></p>
+       <p><%= Contribution.find(m5_lesson).place %></p>
+       <a href="/de/<%= m5_lesson %>">+</a><br>
+     <% end %>
+    </td>
+   
+    <td>
+      <% @t5_lessons.each do |t5_lesson| %>
+       <p><%= Contribution.find(t5_lesson).name %></p>
+       <p><%= Contribution.find(t5_lesson).place %></p>
+       <a href="/de/<%= t5_lesson %>">+</a><br>
+     <% end %>
+    </td>
+   
+     <td>
+      <% @w5_lessons.each do |w5_lesson| %>
+       <p><%= Contribution.find(w5_lesson).name %></p>
+       <p><%= Contribution.find(w5_lesson).place %></p>
+       <a href="/de/<%= w5_lesson %>">+</a><br>
+      <% end %>
+     </td>
+     
+    <td>
+      <% @th5_lessons.each do |th5_lesson| %>
+        <p><%= Contribution.find(th5_lesson).name %></p>
+        <p><%= Contribution.find(th5_lesson).place %></p>
+        <a href="/de/<%= th5_lesson %>">+</a><br>
+      <% end %>
+    </td>
+      
+    <td>
+      <% @f5_lessons.each do |f5_lesson| %>
+        <p><%= Contribution.find(f5_lesson).name %></p>
+        <p><%= Contribution.find(f5_lesson).place %></p>
+        <a href="/de/<%= f5_lesson %>">+</a><br>
+      <% end %>
+    </td>
+    <td>
+      <% @s5_lessons.each do |s5_lesson| %>
+        <p><%= Contribution.find(s5_lesson).name %></p>
+        <p><%= Contribution.find(s5_lesson).place %></p>
+        <a href="/de/<%= s5_lesson %>">+</a><br>
+      <% end %>
+    </td>
+   </tr>
+   
+<!--６限月〜土-->
+    <tr>
+   <th scope="row">6</th>
+   
+    <td>
+     <% @m6_lessons.each do |m6_lesson| %>
+       <p><%= Contribution.find(m6_lesson).name %></p>
+       <p><%= Contribution.find(m6_lesson).place %></p>
+       <a href="/de/<%= m6_lesson %>">+</a><br>
+     <% end %>
+    </td>
+   
+    <td>
+      <% @t6_lessons.each do |t6_lesson| %>
+       <p><%= Contribution.find(t6_lesson).name %></p>
+       <p><%= Contribution.find(t6_lesson).place %></p>
+       <a href="/de/<%= t6_lesson %>">+</a><br>
+     <% end %>
+    </td>
+   
+     <td>
+      <% @w6_lessons.each do |w6_lesson| %>
+       <p><%= Contribution.find(w6_lesson).name %></p>
+       <p><%= Contribution.find(w6_lesson).place %></p>
+       <a href="/de/<%= w6_lesson %>">+</a><br>
+      <% end %>
+     </td>
+     
+    <td>
+      <% @th6_lessons.each do |th6_lesson| %>
+        <p><%= Contribution.find(th6_lesson).name %></p>
+        <p><%= Contribution.find(th6_lesson).place %></p>
+        <a href="/de/<%= th6_lesson %>">+</a><br>
+      <% end %>
+    </td>
+      
+    <td>
+      <% @f6_lessons.each do |f6_lesson| %>
+        <p><%= Contribution.find(f6_lesson).name %></p>
+        <p><%= Contribution.find(f6_lesson).place %></p>
+        <a href="/de/<%= f6_lesson %>">+</a><br>
+      <% end %>
+    </td>
+    <td>
+      <% @s6_lessons.each do |s6_lesson| %>
+        <p><%= Contribution.find(s6_lesson).name %></p>
+        <p><%= Contribution.find(s6_lesson).place %></p>
+        <a href="/de/<%= s6_lesson %>">+</a><br>
+      <% end %>
+    </td>
+   </tr>
+    
+  </tbody>
+</table>
+<% end %>
+
+</body>
+</html>

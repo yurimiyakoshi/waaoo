@@ -243,6 +243,14 @@ get '/de/:id' do
     erb :detail
 end
 
+post '/comment/:id' do
+    content = Contribution.find(params[:id])
+    content.comments.create({
+        sentence: params[:sentence]
+    })
+    redirect '/top'
+end
+
 # 授業詳細ページ
 post '/detail/:id' do
     content = Contribution.find(params[:id])
@@ -271,7 +279,7 @@ post '/detail/:id' do
 end
 
 # ユーザー編集
-post '/edit_user/:id' do
+get '/edit_user/:id' do
     @user = User.find(params[:id])
     erb :user_edit
 end

@@ -10,10 +10,6 @@
     
 }
 
-header {
-    margin-top: 0px;
-	
-}
 
 body {
     background: linear-gradient(25deg, rgba(242, 128, 165, 0.4), rgba(6, 212, 226, 0.4)) ,url(../images/logouni.png);
@@ -26,8 +22,8 @@ body {
 }
 
 .header {
+    height: 35px;
     line-height: 20px;
-    margin-left: 150px;
 }
 
 h2 {
@@ -52,11 +48,15 @@ div {
     width: 200px;
 }
 
-.button {
+a {
+text-decoration: none;
+}
+
+.add {
     display: inline-block;
-    padding: 0.5em 1em;
+    padding: 1em 2em;
     text-decoration: none;
-    border-radius: 3px;
+    border-radius: 8px;
     transition: .4s;
     color: #80cbd0;
     border-radius: 8px;
@@ -64,32 +64,55 @@ div {
     
     margin: 2em 1.25%;
     background: transparent;
+    margin-top: 2px;
+    margin-bottom: 2px;
     
 }
+.add:hover {
+    background: #eeeeee;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: .4s;
+    color: #80cbd0;
+    border-radius: 8px;
+    transition: .4s;
+    
+    margin: 2em 1.25%;
+    background: transparent;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    
+}
+
 .button:hover {
     background: #eeeeee;
 }
 
-
 .table {
+    margin-top: -6%;
     margin-left: auto;
     margin-right: auto;
     border: 8px solid #604C3F;
     border-radius: 10px;
     width: 60%;
     height: 80%;
-    font-size: 15px;
-    background: rgba(25,0,0,0.1);
-    
+    background: rgba(999,999,999,0.5);
     border-collapse: separate;
     border-spacing: 0;
-  
+    font-size: 20px;
     overflow: hidden;
+    line-height: 0.5em;
 }
+
 table thead th,
 table tbody th,
 table tbody td {
-  
+  margin: 2px;
   border-bottom: 1px solid #aaa;
 }
 table thead th + th,
@@ -101,42 +124,34 @@ table tbody tr:last-child td {
   border-bottom: none;
 }
 
+table tb {
+    padding-top: 2px;
+}
+p {
+    padding: 2px;
+}
 
+.lec {display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: .4s;
+    color: #80cbd0;
+    border-radius: 8px;
+    transition: .4s;
+    
+    margin: 2em 1.25%;
+    background: transparent;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    
+}
+.lec:hover {
+    background: #80cbd0;
+    color: #eeeeee;
+}
 
 table th {
   padding: 10px;
   width: 25px;
 }
-
-input[type="text"],
-textarea {
-  outline: none;
-  border: 1px solid #aaa;
-  -webkit-transition: all .3s;
-  transition: all .3s;
-}
-input[type="text"]:focus,
-textarea:focus {
-  box-shadow: 0 0 7px #80cbd0;
-  border: 1px solid #80cbd0;
-}
-
-input[type="submit"] p {
-	display: block;
-	width: 110px;
-	height: 38px;
-	padding: 0;
-	background: url(https://nxworld.net/example/15-useful-css-snippets-in-form-style/btn_submit.png) no-repeat 0 0;
-	border: none;
-	color: transparent;
-	font-size: 0;
-	cursor: pointer;
-	outline: none;
-}
-input[type="submit"]:hover {
-	background-position: 0 -38px;
-}
-input[type="submit"]:active {
-	background-position: 0 -76px;
-}
-

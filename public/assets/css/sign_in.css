@@ -81,6 +81,8 @@ textarea:focus {
   box-shadow: 0 0 7px #80cbd0;
   border: 1px solid #80cbd0;
 }
+
+
 .select-box01 select {
 	width: 5%;
 	padding: 10px;

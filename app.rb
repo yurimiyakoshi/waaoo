@@ -14,7 +14,7 @@ helpers do
 end
 
 # ログインページ
-get '/' do
+get '/top' do
     erb :sign_in
 end
 
@@ -24,12 +24,12 @@ get '/signup' do
 end
 
 # ログイン
-post '/' do
+post '/top' do
   user = User.find_by(user_name: params[:user_name])
   if user && user.authenticate(params[:password])
     session[:user] = user.id
   end
-  redirect '/top'
+  redirect '/'
 end
 
 # 新規登録
@@ -46,17 +46,17 @@ post '/signup' do
   if @user.persisted?
     session[:user] = @user.id
   end
-  redirect '/top'
+  redirect '/'
 end
 
 # ログアウト
 get '/signout' do
   session[:user] = nil
-  redirect '/top'
+  redirect '/'
 end
 
 # 授業一覧トップページ(授業名＋場所＋出欠)
-get '/top' do
+get '/' do
 #  1限月〜土
  unless UserLecture.where(user_id: session[:user], date: "月", number: "1").nil?
     @m1_lessons = UserLecture.where(user_id: session[:user], date: "月", number: "1").pluck(:contribution_id)
@@ -220,7 +220,7 @@ post '/new' do
         date: params[:date],
         number: params[:number]
     })
-    redirect '/top' 
+    redirect '/' 
 end
 
 # 授業削除
@@ -228,7 +228,7 @@ post "/delete/:id" do
     UserLecture.find_by({
         contribution_id: params[:id]
     }).destroy
-    redirect '/top'
+    redirect '/'
 end
 
 # 科目ごとの詳細を表示する
@@ -248,7 +248,7 @@ post '/comment/:id' do
     content.comments.create({
         sentence: params[:sentence]
     })
-    redirect '/top'
+    redirect '/'
 end
 
 # 授業詳細ページ
@@ -275,7 +275,7 @@ post '/detail/:id' do
         teacher: params[:teacher],
         mail: params[:mail]
     })
-    redirect '/top'
+    redirect '/'
 end
 
 # ユーザー編集
@@ -290,5 +290,5 @@ post '/renew_user/:id' do
         user_name: params[:user_name],
         major: params[:major]
     })
-    redirect '/top'
+    redirect '/'
 end

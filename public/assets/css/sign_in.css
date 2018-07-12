@@ -29,7 +29,6 @@ body {
      width: 30%;
     margin: 2em 1.25%;
     background: transparent;
-    
 }
 .button:hover {
     background: #eeeeee;
@@ -45,42 +44,19 @@ h2 {
   
 
 input{
-     width: 30%;
+    width: 30%;
     margin: 2em 1.25%;
     border: 0; 
     background: transparent;
     border: 5px;
     padding: .25em .35em;
-    outline: none; 
     border-radius: 8px;
+  　-webkit-transition: all .3s;
+  　transition: all .3s;
+  　box-shadow: 0 0 7px #80cbd0;
+ 　 border: 1px solid #80cbd0;
 }
 
-
-input[type="text"],
-textarea {
-  outline: none;
-  border: 1px solid #aaa;
-  -webkit-transition: all .3s;
-  transition: all .3s;
-}
-input[type="text"]:focus,
-textarea:focus {
-  box-shadow: 0 0 7px #80cbd0;
-  border: 1px solid #80cbd0;
-}
-
-input[type="password"],
-textarea {
-  outline: none;
-  border: 1px solid #aaa;
-  -webkit-transition: all .3s;
-  transition: all .3s;
-}
-input[type="password"]:focus,
-textarea:focus {
-  box-shadow: 0 0 7px #80cbd0;
-  border: 1px solid #80cbd0;
-}
 
 
 .select-box01 select {

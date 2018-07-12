@@ -5,6 +5,7 @@ class Contribution < ActiveRecord::Base
   has_many :professors
   has_many :user_lectures
   has_many :attendances
+  has_many :counts
   has_many :reminders
   has_many :users, :through => :user_lectures
   belongs_to :university
@@ -30,6 +31,7 @@ class User < ActiveRecord::Base
   has_many :user_lectures
   has_many :comments
   has_many :attendances
+  has_many :counts
   has_many :reminders
   has_many :contributions, :through => :user_lectures
   belongs_to :university
@@ -38,6 +40,7 @@ end
 class UserLecture < ActiveRecord::Base
   belongs_to :contribution
   belongs_to :user
+  has_many :counts
   has_many :attendances
   has_many :reminders
 end
@@ -59,4 +62,8 @@ class Reminder < ActiveRecord::Base
   belongs_to :contribution
 end
 
- 
+class Count < ActiveRecord::Base
+   belongs_to :contribution
+   belongs_to :user
+   belongs_to :user_lecture
+end

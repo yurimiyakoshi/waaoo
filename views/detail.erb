@@ -22,6 +22,7 @@
 </main>
     
 <div class="edit">
+ <a href="/" class="return">戻る</a>
  <h3>授業を編集</h3>
  <div class="content">
      
@@ -41,6 +42,15 @@
     <p><%= reminder.deadline %></p>
     <p><%= reminder.report %></p>
   <% end %>
+
+<p>遅刻</p>
+    <p><%= @attendance.number %></p>
+
+<p>欠席</p>
+    <p><%= @attendance.absence %></p>
+
+<p>単位数：<%= @count.unit %></p>
+
 </div>
 
  <form action="/detail/<%= @content.id %>" method="post">
@@ -57,7 +67,12 @@
  <form action="/delete/<%= @content.id %>" method="post">
    <input type="submit" value="授業を削除" class="button">
  </form>
-
+ <form action="/number/<%= @content.id %>" method="post">
+   <input type="submit" value="遅刻" class="button">
+ </form>
+ <form action="/absence/<%= @content.id %>" method="post">
+   <input type="submit" value="欠席" class="button">
+ </form>
 
 </div>
 </div>

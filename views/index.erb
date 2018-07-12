@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <% unless session[:user] %>
+<% unless session[:user] %>
   <link rel="stylesheet" href="/assets/css/sign_in.css">
 </head>
 <body>
@@ -16,16 +16,17 @@
 <% else %>
 <link rel="stylesheet" href="/assets/css/index.css">
   <div class="header">
+  <p><%= current_user.university.school %></p>
   <p><%= current_user.major %></p>
   <h1><%= current_user.user_name %></h1>
   <a href="/new_lecture" method="post" class="add">授業を追加</a>
+  <p>単位数合計：<%= @user_unit %></p>
   </div>
   <div class="menu">
   <a class= "button" href="/signout">ログアウト</a>
   <a href="/edit_user/<%= current_user.id %>" class="button">ユーザー編集</a>
   </form>
   </div>
-  
   
 <table class="table" rules="all">
   <thead>

@@ -9,8 +9,9 @@
  <h2>ユーザー編集</h2>
  
   <form action="/renew_user/<%= User.find(session[:user]).id %>" method="post">
-   <p>ユーザーネーム：<input type="text" name="user_name" value="<%= User.find(session[:user]).user_name %>"></p>
-   <p>学部/学科：<input type="text" name="major" value="<%= User.find(session[:user]).major %>"></p>
+   <p>ユーザーネーム：<input type="text" name="user_name" value="<%= User.find(session[:user]).user_name %>" required></p>
+   <P>大学名：<input type="text" name="school" placeholder="<% current_user.university.school %>" value="<% current_user.university.school %>" required></p>
+   <p>学部/学科：<input type="text" name="major" value="<%= User.find(session[:user]).major %>" required></p>
    <p><input type="submit" value="編集完了" class="button"></p>
    </form>
  

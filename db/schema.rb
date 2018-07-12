@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180516060324) do
+ActiveRecord::Schema.define(version: 20180530094033) do
 
   create_table "attendances", force: :cascade do |t|
-    t.integer  "number"
-    t.integer  "absence"
+    t.integer  "number",          default: 0
+    t.integer  "absence",         default: 0
     t.integer  "contribution_id"
     t.integer  "user_id"
     t.integer  "user_lecture_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20180516060324) do
     t.integer  "university_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "counts", force: :cascade do |t|
+    t.integer  "unit"
+    t.integer  "contribution_id"
+    t.integer  "user_id"
+    t.integer  "user_lecture_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "professors", force: :cascade do |t|

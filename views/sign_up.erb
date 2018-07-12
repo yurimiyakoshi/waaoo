@@ -9,10 +9,11 @@
  <h2>新規登録</h2>
  <div class="log">
  <form action="/signup" method="post">
-    <input type="text" name="major" placeholder="学部"><br>
-    <input type="text" name="user_name" placeholder="ユーザーネーム"><br>
-    <input type="password" name="password" placeholder="パスワード"><br>
-    <input type="password" name="password_confirmation" placeholder="パスワードの確認"><br>
+    <input type="text" name="school" placeholder="大学名" required><br>
+    <input type="text" name="major" placeholder="学部" required><br>
+    <input type="text" name="user_name" placeholder="ユーザーネーム" required><br>
+    <input type="password" name="password" placeholder="パスワード" required><br>
+    <input type="password" name="password_confirmation" placeholder="パスワードの確認" required><br>
     <input type="submit" class="button" value="新規登録">
  </form>
 </div>

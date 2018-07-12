@@ -1,21 +1,32 @@
 User.create({
         user_name: 'test1',
         password: '111',
-        major: 'science'
+        major: 'science',
+        university_id: '1'
     })
     
 User.create({
         user_name: 'test2',
         password: '222',
-        major: 'science'
+        major: 'science',
+        university_id: '1'
     })
     
     
 User.create({
         user_name: 'test3',
         password: '333',
-        major: 'science'
+        major: 'science',
+        university_id: '2'
     })
+    
+University.create({
+        school: '慶應大学'
+})
+
+University.create({
+        school: '早稲田大学'
+})
     
 UserLecture.create([
         {date: '月'},

@@ -34,18 +34,41 @@ end
 
 # 新規登録
 post '/signup' do
+  if University.find_by({school: params[:school]}).nil?
+     @school = University.create(
+      school: params[:school]
+      )
+    if @school.persisted?
+       university_id = @school.id
+    end
+  else
+  university_id = University.find_by({school: params[:school]}).id
+  end
   @user = User.create(
-      major: params[:major],
       user_name: params[:user_name],
       password: params[:password],
-      password_confirmation: params[:password_confirmation]
-      )
-  @user_lecture = UserLecture.create(
-      user_id: session[:user]
+      password_confirmation: params[:password_confirmation],
+      university_id: university_id
       )
   if @user.persisted?
     session[:user] = @user.id
+    if User.find_by({major: params[:major]}).nil?
+     User.create(
+      major: params[:major]
+      )
+    else
+    current_user.major = User.find_by({major: params[:major]}).major
   end
+  end
+  @user_lecture = UserLecture.create(
+      user_id: session[:user]
+      )
+  @attendance = Attendance.create(
+      user_id: session[:user]
+      )
+  @count = Count.create(
+      user_id: session[:user]
+      )
   redirect '/'
 end
 
@@ -177,10 +200,13 @@ get '/' do
              end
             end
            end
-           
-    erb :index
+    
+    @count_units = Count.where(user_id: session[:user])
+    @user_unit = @count_units.sum(:unit)
+    erb :index 
 end
 
+# 授業追加ページ
 get '/new_lecture' do
     erb :new_lecture
 end
@@ -191,34 +217,48 @@ post '/new' do
     place = params[:place]
     teacher = params[:teacher]
     mail = params[:mail]
- if Contribution.find_by({name: name,place: place}).nil?
+    uni_id = User.find(session[:user]).university_id
+ if Contribution.find_by({name: name,place: place, university_id: uni_id}).nil?
     if Professor.find_by({teacher: teacher,mail: mail}).nil?
-     lec =  Professor.create({
-            teacher: teacher,
-            mail: mail
-        })
+     lec = Professor.create({
+           teacher: teacher,
+           mail: mail
+           })
       if lec.persisted?
         professor_id = lec.id
       end
-     professor_id = Professor.find_by({teacher: teacher,mail: mail}).id
     end
-     new =  Contribution.create({
+    professor_id = Professor.find_by({teacher: teacher,mail: mail}).id
+    new = Contribution.create({
             name: name,
             place: place,
-            professor_id: professor_id
-        })
-     if new.persisted?
+            professor_id: professor_id,
+            university_id: uni_id
+           })
+    if new.persisted?
         contribution_id = new.id
-     end
+    end
      Professor.create({
          contribution_id: contribution_id
      })
  end
     contribution_id = Contribution.find_by({name: name,place: place}).id
-    current_user.user_lectures.create({
+    user_lec = current_user.user_lectures.create({
+               contribution_id: contribution_id,
+               date: params[:date],
+               number: params[:number]
+               })
+    if user_lec.persisted?
+        user_lecture_id = user_lec.id
+    end
+    current_user.attendances.create({
         contribution_id: contribution_id,
-        date: params[:date],
-        number: params[:number]
+        user_lecture_id: user_lecture_id
+    })
+    current_user.counts.create({
+        unit: params[:unit],
+        contribution_id: contribution_id,
+        user_lecture_id: user_lecture_id
     })
     redirect '/' 
 end
@@ -226,6 +266,9 @@ end
 # 授業削除
 post "/delete/:id" do
     UserLecture.find_by({
+        contribution_id: params[:id]
+    }).destroy
+    Count.find_by({
         contribution_id: params[:id]
     }).destroy
     redirect '/'
@@ -238,6 +281,12 @@ get '/de/:id' do
     @textbooks = @content.textbooks.all
     @reminders = @content.reminders.all
     @professor = Professor.find_by({
+        contribution_id: params[:id]
+    })
+    @attendance = Attendance.find_by({
+        contribution_id: params[:id]
+    })
+    @count = Count.find_by({
         contribution_id: params[:id]
     })
     erb :detail
@@ -278,6 +327,26 @@ post '/detail/:id' do
     redirect '/'
 end
 
+# 遅刻数カウント
+post '/number/:id' do
+    attendance = Attendance.find_by(
+        contribution_id: params[:id]
+        )
+    attendance.number = attendance.number + 1
+    attendance.save
+    redirect '/'
+end
+
+# 欠席数カウント
+post '/absence/:id' do
+    attendance = Attendance.find_by(
+        contribution_id: params[:id]
+        )
+    attendance.absence = attendance.absence + 1
+    attendance.save
+    redirect '/'
+end
+
 # ユーザー編集
 get '/edit_user/:id' do
     @user = User.find(params[:id])
@@ -289,6 +358,19 @@ post '/renew_user/:id' do
     @user.update({
         user_name: params[:user_name],
         major: params[:major]
+    })
+    if University.find_by({school: params[:school]}).nil?
+     @school = University.create(
+      school: params[:school]
+      )
+      if @school.persisted?
+       university_id = @school.id
+      end
+    else
+      university_id = University.find_by({school: params[:school]}).id
+    end
+    @user.update({
+        university_id: university_id
     })
     redirect '/'
 end
